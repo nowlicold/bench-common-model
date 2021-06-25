@@ -1,3 +1,3 @@
-# bench-common-model
+# common-model
 
-bench的通用模型
+放置通用的底层模型
