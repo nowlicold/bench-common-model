@@ -5,13 +5,13 @@ package com.bench.common.security;
  * @author: Ds
  * @time: 2021/1/5 14:30
  */
-import com.bench.common.util.StringUtils;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * MD5加密
