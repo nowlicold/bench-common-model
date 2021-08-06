@@ -1,5 +1,7 @@
 package com.bench.common.model;
 
+import com.alibaba.fastjson.JSONArray;
+import com.bench.common.error.ErrorCode;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -81,6 +83,10 @@ public class JsonResult<T> {
 
     public static <T> JsonResult<T> error(String message) {
         return new JsonResult<T>(false, ERROR_CODE, message);
+    }
+
+    public static <T> JsonResult<T> error(ErrorCode errorCode) {
+        return new JsonResult<T>(false, ERROR_CODE, JSONArray.toJSON(errorCode).toString());
     }
 
     public static <T> JsonResult<T> error(T data, String message) {
