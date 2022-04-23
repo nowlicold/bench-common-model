@@ -27,4 +27,8 @@ public class BaseResult {
     @ApiModelProperty(value = "错误枚举详细信息")
     private String detailMessage;
 
+    public String toString() {
+        return "BaseResult(success=" + this.isSuccess() + ", errorCode=" + this.getErrorCode() + ", detailMessage=" + this.getDetailMessage() + ")";
+    }
+
 }

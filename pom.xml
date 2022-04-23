@@ -60,12 +60,12 @@
         <repository>
             <id>yuan-nexus-releases</id>
             <name>yuan-nexus-releases</name>
-            <url>http://192.168.1.151:1200/repository/maven-releases/</url>
+            <url>https://nexus.sparticle.com/repository/maven-releases/</url>
         </repository>
         <snapshotRepository>
             <id>yuan-nexus-snapshots</id>
             <name>yuan-nexus-snapshots</name>
-            <url>http://192.168.1.151:1200/repository/maven-snapshots/</url>
+            <url>https://nexus.sparticle.com/repository/maven-snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 
