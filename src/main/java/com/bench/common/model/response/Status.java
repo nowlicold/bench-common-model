@@ -2,6 +2,7 @@ package com.bench.common.model.response;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * <p>
@@ -12,6 +13,7 @@ import lombok.Data;
  * @date 2022/6/29 17:15
  */
 @Data
+@NoArgsConstructor
 public class Status {
     @ApiModelProperty(value = "请求成功与否,true:成功,false:失败", required = true)
     private boolean ok;
@@ -21,9 +23,6 @@ public class Status {
 
     @ApiModelProperty(value = "提示信息")
     private ErrMetadata errMetadata;
-
-    public Status() {
-    }
 
     public Status(boolean ok) {
         this.ok = ok;
