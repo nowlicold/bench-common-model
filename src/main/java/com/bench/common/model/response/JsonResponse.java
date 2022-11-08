@@ -3,6 +3,7 @@ package com.bench.common.model.response;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * <p>
@@ -18,6 +19,7 @@ import lombok.Data;
  */
 @ApiModel(description = "通用返回模型")
 @Data
+@NoArgsConstructor
 public class JsonResponse<T> {
     private static final String MSG_BAD_REQUEST = "BAD_REQUEST";
     private static final String MSG_INTERNAL_SERVER_ERROR = "INTERNAL_SERVER_ERROR";
