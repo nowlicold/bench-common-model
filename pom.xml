@@ -56,18 +56,7 @@
         </dependency>
     </dependencies>
 
-    <distributionManagement>
-        <repository>
-            <id>yuan-nexus-releases</id>
-            <name>yuan-nexus-releases</name>
-            <url>https://nexus.sparticle.com/repository/maven-releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>yuan-nexus-snapshots</id>
-            <name>yuan-nexus-snapshots</name>
-            <url>https://nexus.sparticle.com/repository/maven-snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
+
 
     <build>
         <plugins>

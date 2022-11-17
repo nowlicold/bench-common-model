@@ -87,6 +87,10 @@ public class ErrorCode {
 		if (obj == null) {
 			return false;
 		}
+		//如果只为String类型，则认为是错误码
+		if (obj instanceof  String) {
+			return StringUtils.equals((String)obj,this.name);
+		}
 		if (obj instanceof ErrorCode) {
 			return ((ErrorCode) obj).name.equals(this.name);
 		}
