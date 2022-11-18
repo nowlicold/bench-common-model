@@ -8,6 +8,11 @@
     <artifactId>common-model</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
+    <parent>
+        <groupId>com.bench</groupId>
+        <artifactId>bench-dependency</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
 
     <dependencies>
         <dependency>
@@ -57,7 +62,33 @@
     </dependencies>
 
 
-
+    <repositories>
+        <repository>
+            <id>yuan-nexus-releases</id>
+            <name>Team Nexus Repository</name>
+            <url>https://nexus.sparticle.com/repository/maven-releases/</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>yuan-nexus-snapshots</id>
+            <name>yuan-nexus-snapshots</name>
+            <url>https://nexus.sparticle.com/repository/maven-snapshots/</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
     <build>
         <plugins>
             <plugin>
@@ -86,6 +117,13 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <configuration>
+                    <skip>false</skip>
+                </configuration>
             </plugin>
         </plugins>
 
