@@ -128,6 +128,9 @@ public class JsonResponse<T> {
     public static <T> JsonResponse<T> error() {
         return new JsonResponse<>(false, MSG_INTERNAL_SERVER_ERROR);
     }
+    public static <T> JsonResponse<T> error(ErrorCode errorCode) {
+        return new JsonResponse<>(false, errorCode);
+    }
 
     public static <RT extends BaseResult,T> JsonResponse<T> bindBaseResult(RT baseResult){
         if(baseResult.isSuccess()){
