@@ -1,8 +1,10 @@
 package com.bench.common.model.response;
 
+import com.bench.common.error.ErrorCode;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * <p>
@@ -23,6 +25,11 @@ public class Status {
 
     @ApiModelProperty(value = "提示信息")
     private ErrMetadata errMetadata;
+    /**
+     * 为满足rpc调用后业务方需要根据 错误码进行判断业务处理
+     */
+    @ApiModelProperty(value = "错误代码实体，此值非空时，则取code与message 覆盖 errCode与errMetadata")
+    private ErrorCode errorCode;
 
     public Status(boolean ok) {
         this.ok = ok;
@@ -37,5 +44,23 @@ public class Status {
         this.ok = ok;
         this.errCode = errCode;
         this.errMetadata = new ErrMetadata(message);
+    }
+
+    public Status(boolean ok,ErrorCode errorCodeEntry){
+        this.ok =  ok;
+        this.errorCode = errorCodeEntry;
+        if(errorCodeEntry != null){
+            this.errCode = errorCodeEntry.getName();
+            this.errMetadata = new ErrMetadata(StringUtils.isNotEmpty(errorCodeEntry.getMessage())? errorCodeEntry.getMessage():errorCodeEntry.getName());
+        }
+    }
+
+
+    public boolean equalsErrorCode(ErrorCode errorCodeEntry){
+        if(errorCodeEntry == null){
+            return false;
+        }
+        return errorCodeEntry.equals(this.getErrorCode());
+
     }
 }

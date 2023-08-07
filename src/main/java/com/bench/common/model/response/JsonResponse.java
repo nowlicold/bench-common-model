@@ -1,5 +1,8 @@
 package com.bench.common.model.response;
 
+import com.bench.common.enums.error.ErrorEnum;
+import com.bench.common.error.ErrorCode;
+import com.bench.common.model.BaseResult;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -23,6 +26,8 @@ import lombok.NoArgsConstructor;
 public class JsonResponse<T> {
     private static final String MSG_BAD_REQUEST = "BAD_REQUEST";
     private static final String MSG_INTERNAL_SERVER_ERROR = "INTERNAL_SERVER_ERROR";
+
+    private static final String MSG_UNKNOWN_ERROR="MSG_UNKNOWN_ERROR";
 
     @ApiModelProperty(value = "状态")
     private Status status;
@@ -50,6 +55,9 @@ public class JsonResponse<T> {
         this.status = new Status(ok, errCode, message);
     }
 
+    private JsonResponse(boolean ok, ErrorCode errCode) {
+        this.status = new Status(ok, errCode);
+    }
     public void addMessage(String message) {
         this.status.getErrMetadata().addDetail(message);
     }
@@ -120,4 +128,20 @@ public class JsonResponse<T> {
     public static <T> JsonResponse<T> error() {
         return new JsonResponse<>(false, MSG_INTERNAL_SERVER_ERROR);
     }
+    public static <T> JsonResponse<T> error(ErrorCode errorCode) {
+        return new JsonResponse<>(false, errorCode);
+    }
+
+    public static <RT extends BaseResult,T> JsonResponse<T> bindBaseResult(RT baseResult){
+        if(baseResult.isSuccess()){
+            return (JsonResponse<T>) ok(baseResult);
+        }else{
+            if(baseResult.getErrorCode() == null){
+                return new JsonResponse<>(false,new ErrorCode(MSG_UNKNOWN_ERROR,MSG_UNKNOWN_ERROR));
+            }else {
+                return new JsonResponse<>(false, baseResult.getErrorCode());
+            }
+        }
+    }
+
 }
