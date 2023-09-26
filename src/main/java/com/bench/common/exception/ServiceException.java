@@ -51,7 +51,7 @@ public class ServiceException extends RuntimeException {
     }
 
     public static void throwTooManyRequestEx() {
-        throwBadRequestEx(HttpStatus.TOO_MANY_REQUESTS.message());
+        throwTooManyRequestEx(HttpStatus.TOO_MANY_REQUESTS.message());
     }
 
     public static void throwTooManyRequestEx(String message) {
@@ -59,7 +59,7 @@ public class ServiceException extends RuntimeException {
     }
 
     public static void throwNotFoundEx(String message) {
-        throwBadRequestEx(ErrorCodeBase.NOT_FOUND, message);
+        throwNotFoundEx(ErrorCodeBase.NOT_FOUND, message);
     }
 
     public static void throwNotFoundEx(ErrorCode errorCode, String message) {
@@ -67,11 +67,11 @@ public class ServiceException extends RuntimeException {
     }
 
     public static void throwUnauthorizedEx() {
-        throwBadRequestEx(HttpStatus.UNAUTHORIZED.message());
+        throwUnauthorizedEx(HttpStatus.UNAUTHORIZED.message());
     }
 
     public static void throwUnauthorizedEx(String message) {
-        throwBadRequestEx(ErrorCodeBase.UNAUTHORIZED, message);
+        throwUnauthorizedEx(ErrorCodeBase.UNAUTHORIZED, message);
     }
 
     public static void throwUnauthorizedEx(ErrorCode errorCode, String message) {
@@ -79,11 +79,11 @@ public class ServiceException extends RuntimeException {
     }
 
     public static void throwForbiddenEx() {
-        throwBadRequestEx(HttpStatus.FORBIDDEN.message());
+        throwForbiddenEx(HttpStatus.FORBIDDEN.message());
     }
 
     public static void throwForbiddenEx(String message) {
-        throwBadRequestEx(ErrorCodeBase.FORBIDDEN, message);
+        throwForbiddenEx(ErrorCodeBase.FORBIDDEN, message);
     }
 
     public static void throwForbiddenEx(ErrorCode errorCode, String message) {
