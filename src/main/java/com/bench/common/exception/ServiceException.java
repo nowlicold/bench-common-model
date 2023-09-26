@@ -39,7 +39,7 @@ public class ServiceException extends RuntimeException {
     }
 
     public static void throwBadRequestEx() {
-        throwBadRequestEx(HttpStatus.INTERNAL_SERVER_ERROR.message());
+        throwBadRequestEx(HttpStatus.BAD_REQUEST.message());
     }
 
     public static void throwBadRequestEx(String message) {
@@ -64,6 +64,30 @@ public class ServiceException extends RuntimeException {
 
     public static void throwNotFoundEx(ErrorCode errorCode, String message) {
         throwEx(HttpStatus.NOT_FOUND, errorCode, message);
+    }
+
+    public static void throwUnauthorizedEx() {
+        throwBadRequestEx(HttpStatus.UNAUTHORIZED.message());
+    }
+
+    public static void throwUnauthorizedEx(String message) {
+        throwBadRequestEx(ErrorCodeBase.UNAUTHORIZED, message);
+    }
+
+    public static void throwUnauthorizedEx(ErrorCode errorCode, String message) {
+        throwEx(HttpStatus.UNAUTHORIZED, errorCode, message);
+    }
+
+    public static void throwForbiddenEx() {
+        throwBadRequestEx(HttpStatus.FORBIDDEN.message());
+    }
+
+    public static void throwForbiddenEx(String message) {
+        throwBadRequestEx(ErrorCodeBase.FORBIDDEN, message);
+    }
+
+    public static void throwForbiddenEx(ErrorCode errorCode, String message) {
+        throwEx(HttpStatus.FORBIDDEN, errorCode, message);
     }
 
     public static void throwEx(HttpStatus status, ErrorCode code, String message) {

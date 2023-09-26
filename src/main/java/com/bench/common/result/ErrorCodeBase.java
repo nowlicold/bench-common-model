@@ -15,6 +15,9 @@ public enum ErrorCodeBase implements ErrorCode {
     NOT_FOUND,
     TOO_MANY_REQUESTS, // 请求过于频繁/加锁失败
 
+    UNAUTHORIZED,
+
+    FORBIDDEN,
     ;
 
 }
