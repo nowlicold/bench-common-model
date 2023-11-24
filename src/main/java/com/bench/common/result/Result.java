@@ -13,7 +13,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @ApiModel(value = "Result")
 public class Result<T> {
-    @ApiModelProperty(value = "HTTP 状态码")
+    @ApiModelProperty(value = "HTTP 状态码", example = "200")
     private Integer status;
 
     @ApiModelProperty(value = "错误码")
