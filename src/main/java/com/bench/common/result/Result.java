@@ -33,6 +33,10 @@ public class Result<T> {
         return new Result<>(HttpStatus.OK, ErrorCodeBase.OK, null, data);
     }
 
+    public static <T> Result<T> ok(T data, ErrorCode errorCode) {
+        return new Result<>(HttpStatus.OK, errorCode, null, data);
+    }
+
     public static <T> Result<T> error(ErrorCode code, String message) {
         return result(HttpStatus.INTERNAL_SERVER_ERROR, code, message);
     }
