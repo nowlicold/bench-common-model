@@ -25,7 +25,7 @@ public class Result<T> {
     @ApiModelProperty(value = "业务数据对象")
     private T data;
 
-    public static Result<Object> ok() {
+    public static Result<Void> ok() {
         return ok(null);
     }
 
